@@ -21,7 +21,7 @@ import { MARKERS } from "../markers";
 const styles = (theme: Theme) =>
   createStyles({
     header: {
-      padding: "20px 70px"
+      padding: theme.calendar?.header?.padding ?? "20px 70px"
     },
     headerItem: {
       flex: 1,
