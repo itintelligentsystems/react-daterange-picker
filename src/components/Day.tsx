@@ -1,7 +1,7 @@
 import * as React from "react";
 import { combine } from "../utils";
 import { IconButton, Typography } from "@material-ui/core";
-import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
+import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
 
 interface DayProps {
   filled?: boolean;
@@ -15,21 +15,24 @@ interface DayProps {
   value: number | string;
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles = makeStyles((theme: Theme) => {
+  const borderRadius = theme.calendar?.chip?.borderRadius ?? "50%";
+
+  return createStyles({
     leftBorderRadius: {
-      borderRadius: "50% 0 0 50%"
+      borderRadius: `${borderRadius} 0 0 ${borderRadius}`
     },
     rightBorderRadius: {
-      borderRadius: "0 50% 50% 0"
+      borderRadius: `0 ${borderRadius} ${borderRadius} 0`
     },
     buttonContainer: {
       display: "flex"
     },
-    button: {
-      height: 36,
-      width: 36,
-      padding: 0
+    dayButton: {
+      height: theme.calendar?.chip?.height ?? 36,
+      width: theme.calendar?.chip?.width ?? 36,
+      padding: 0,
+      borderRadius: borderRadius
     },
     buttonText: {
       lineHeight: 1.6
@@ -44,16 +47,18 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.primary.dark
     },
     highlighted: {
-      backgroundColor: theme.palette.action.hover
+      backgroundColor: theme.palette.primary.light
     },
     contrast: {
       color: theme.palette.primary.contrastText
     }
-  })
-)
+  });
+});
 
 const Day = (props: DayProps) => {
+  const { value } = props;
   const classes = useStyles();
+
   return (
     <div
       className={combine(
@@ -61,23 +66,26 @@ const Day = (props: DayProps) => {
         props.startOfRange && classes.leftBorderRadius,
         props.endOfRange && classes.rightBorderRadius,
         !props.disabled && props.highlighted && classes.highlighted
-      )}>
+      )}
+    >
       <IconButton
         className={combine(
-          classes.button,
+          classes.dayButton,
           !props.disabled && props.outlined && classes.outlined,
           !props.disabled && props.filled && classes.filled
         )}
         disabled={props.disabled}
         onClick={props.onClick}
-        onMouseOver={props.onHover}>
+        onMouseOver={props.onHover}
+      >
         <Typography
           className={combine(
             classes.buttonText,
             !props.disabled && props.filled && classes.contrast
           )}
-          variant="body2">
-          {props.value}
+          variant="body2"
+        >
+          {value}
         </Typography>
       </IconButton>
     </div>
