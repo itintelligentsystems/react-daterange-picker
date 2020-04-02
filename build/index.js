@@ -7,6 +7,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var React = require('react');
 var React__default = _interopDefault(React);
 var core = require('@material-ui/core');
+var styles$3 = require('@material-ui/core/styles');
 var ArrowRightAlt = _interopDefault(require('@material-ui/icons/ArrowRightAlt'));
 var ChevronLeft = _interopDefault(require('@material-ui/icons/ChevronLeft'));
 var ChevronRight = _interopDefault(require('@material-ui/icons/ChevronRight'));
@@ -3372,7 +3373,7 @@ var parseOptionalDate = function (date, defaultValue) {
     return defaultValue;
 };
 
-var styles = core.createStyles({
+var styles = styles$3.createStyles({
     iconContainer: {
         padding: 5
     },
@@ -3423,23 +3424,26 @@ var Header = function (_a) {
             React__default.createElement(core.IconButton, { className: classes.icon, disabled: nextDisabled, onClick: onClickNext },
                 React__default.createElement(ChevronRight, { color: nextDisabled ? "disabled" : "action" })))));
 };
-var Header$1 = core.withStyles(styles)(Header);
+var Header$1 = styles$3.withStyles(styles)(Header);
 
-var useStyles = core.makeStyles(function (theme) {
-    return core.createStyles({
+var useStyles = styles$3.makeStyles(function (theme) {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+    var borderRadius = (_c = (_b = (_a = theme.calendar) === null || _a === void 0 ? void 0 : _a.chip) === null || _b === void 0 ? void 0 : _b.borderRadius) !== null && _c !== void 0 ? _c : "50%";
+    return styles$3.createStyles({
         leftBorderRadius: {
-            borderRadius: "50% 0 0 50%"
+            borderRadius: borderRadius + " 0 0 " + borderRadius
         },
         rightBorderRadius: {
-            borderRadius: "0 50% 50% 0"
+            borderRadius: "0 " + borderRadius + " " + borderRadius + " 0"
         },
         buttonContainer: {
             display: "flex"
         },
-        button: {
-            height: 36,
-            width: 36,
-            padding: 0
+        dayButton: {
+            height: (_f = (_e = (_d = theme.calendar) === null || _d === void 0 ? void 0 : _d.chip) === null || _e === void 0 ? void 0 : _e.height) !== null && _f !== void 0 ? _f : 36,
+            width: (_j = (_h = (_g = theme.calendar) === null || _g === void 0 ? void 0 : _g.chip) === null || _h === void 0 ? void 0 : _h.width) !== null && _j !== void 0 ? _j : 36,
+            padding: 0,
+            borderRadius: borderRadius
         },
         buttonText: {
             lineHeight: 1.6
@@ -3454,7 +3458,7 @@ var useStyles = core.makeStyles(function (theme) {
             backgroundColor: theme.palette.primary.dark
         },
         highlighted: {
-            backgroundColor: theme.palette.action.hover
+            backgroundColor: theme.palette.primary.light
         },
         contrast: {
             color: theme.palette.primary.contrastText
@@ -3462,10 +3466,11 @@ var useStyles = core.makeStyles(function (theme) {
     });
 });
 var Day = function (props) {
+    var value = props.value;
     var classes = useStyles();
     return (React.createElement("div", { className: combine(classes.buttonContainer, props.startOfRange && classes.leftBorderRadius, props.endOfRange && classes.rightBorderRadius, !props.disabled && props.highlighted && classes.highlighted) },
-        React.createElement(core.IconButton, { className: combine(classes.button, !props.disabled && props.outlined && classes.outlined, !props.disabled && props.filled && classes.filled), disabled: props.disabled, onClick: props.onClick, onMouseOver: props.onHover },
-            React.createElement(core.Typography, { className: combine(classes.buttonText, !props.disabled && props.filled && classes.contrast), variant: "body2" }, props.value))));
+        React.createElement(core.IconButton, { className: combine(classes.dayButton, !props.disabled && props.outlined && classes.outlined, !props.disabled && props.filled && classes.filled), disabled: props.disabled, onClick: props.onClick, onMouseOver: props.onHover },
+            React.createElement(core.Typography, { className: combine(classes.buttonText, !props.disabled && props.filled && classes.contrast), variant: "body2" }, value))));
 };
 
 var NavigationAction;
@@ -3539,9 +3544,10 @@ var MARKERS = {
 };
 
 var styles$2 = function (theme) {
-    return core.createStyles({
+    var _a, _b, _c;
+    return styles$3.createStyles({
         header: {
-            padding: "20px 70px"
+            padding: (_c = (_b = (_a = theme.calendar) === null || _a === void 0 ? void 0 : _a.header) === null || _b === void 0 ? void 0 : _b.padding) !== null && _c !== void 0 ? _c : "20px 70px"
         },
         headerItem: {
             flex: 1,
@@ -3581,7 +3587,7 @@ var Menu = function (props) {
             React__default.createElement(core.Grid, null,
                 React__default.createElement(DefinedRanges, { selectedRange: dateRange, ranges: ranges, setRange: setDateRange })))));
 };
-var Menu$1 = core.withStyles(styles$2)(Menu);
+var Menu$1 = styles$3.withStyles(styles$2)(Menu);
 
 var getDefaultRanges = function (date) { return [
     {

@@ -1,5 +1,6 @@
 import React__default, { createElement, useState } from 'react';
-import { createStyles, withStyles, Grid, IconButton, Select, MenuItem, makeStyles, Typography, Paper, List, ListItem, ListItemText, Divider } from '@material-ui/core';
+import { Grid, IconButton, Select, MenuItem, Typography, withStyles as withStyles$1, createStyles as createStyles$1, Paper, List, ListItem, ListItemText, Divider } from '@material-ui/core';
+import { createStyles, withStyles, makeStyles } from '@material-ui/core/styles';
 import ArrowRightAlt from '@material-ui/icons/ArrowRightAlt';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import ChevronRight from '@material-ui/icons/ChevronRight';
@@ -3419,20 +3420,23 @@ var Header = function (_a) {
 var Header$1 = withStyles(styles)(Header);
 
 var useStyles = makeStyles(function (theme) {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+    var borderRadius = (_c = (_b = (_a = theme.calendar) === null || _a === void 0 ? void 0 : _a.chip) === null || _b === void 0 ? void 0 : _b.borderRadius) !== null && _c !== void 0 ? _c : "50%";
     return createStyles({
         leftBorderRadius: {
-            borderRadius: "50% 0 0 50%"
+            borderRadius: borderRadius + " 0 0 " + borderRadius
         },
         rightBorderRadius: {
-            borderRadius: "0 50% 50% 0"
+            borderRadius: "0 " + borderRadius + " " + borderRadius + " 0"
         },
         buttonContainer: {
             display: "flex"
         },
-        button: {
-            height: 36,
-            width: 36,
-            padding: 0
+        dayButton: {
+            height: (_f = (_e = (_d = theme.calendar) === null || _d === void 0 ? void 0 : _d.chip) === null || _e === void 0 ? void 0 : _e.height) !== null && _f !== void 0 ? _f : 36,
+            width: (_j = (_h = (_g = theme.calendar) === null || _g === void 0 ? void 0 : _g.chip) === null || _h === void 0 ? void 0 : _h.width) !== null && _j !== void 0 ? _j : 36,
+            padding: 0,
+            borderRadius: borderRadius
         },
         buttonText: {
             lineHeight: 1.6
@@ -3447,7 +3451,7 @@ var useStyles = makeStyles(function (theme) {
             backgroundColor: theme.palette.primary.dark
         },
         highlighted: {
-            backgroundColor: theme.palette.action.hover
+            backgroundColor: theme.palette.primary.light
         },
         contrast: {
             color: theme.palette.primary.contrastText
@@ -3455,10 +3459,11 @@ var useStyles = makeStyles(function (theme) {
     });
 });
 var Day = function (props) {
+    var value = props.value;
     var classes = useStyles();
     return (createElement("div", { className: combine(classes.buttonContainer, props.startOfRange && classes.leftBorderRadius, props.endOfRange && classes.rightBorderRadius, !props.disabled && props.highlighted && classes.highlighted) },
-        createElement(IconButton, { className: combine(classes.button, !props.disabled && props.outlined && classes.outlined, !props.disabled && props.filled && classes.filled), disabled: props.disabled, onClick: props.onClick, onMouseOver: props.onHover },
-            createElement(Typography, { className: combine(classes.buttonText, !props.disabled && props.filled && classes.contrast), variant: "body2" }, props.value))));
+        createElement(IconButton, { className: combine(classes.dayButton, !props.disabled && props.outlined && classes.outlined, !props.disabled && props.filled && classes.filled), disabled: props.disabled, onClick: props.onClick, onMouseOver: props.onHover },
+            createElement(Typography, { className: combine(classes.buttonText, !props.disabled && props.filled && classes.contrast), variant: "body2" }, value))));
 };
 
 var NavigationAction;
@@ -3469,7 +3474,7 @@ var NavigationAction;
 
 var WEEK_DAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 var styles$1 = function (_) {
-    return createStyles({
+    return createStyles$1({
         root: {
             width: 290
         },
@@ -3504,7 +3509,7 @@ var Month = function (props) {
                         !isWithinInterval(day, { start: minDate, end: maxDate }), startOfRange: isStart && !isRangeOneDay, endOfRange: isEnd && !isRangeOneDay, onClick: function () { return handlers.onDayClick(day); }, onHover: function () { return handlers.onDayHover(day); }, value: getDate(day) }));
             }))); })))));
 };
-var Month$1 = withStyles(styles$1)(Month);
+var Month$1 = withStyles$1(styles$1)(Month);
 
 var isSameRange = function (first, second) {
     var fStart = first.startDate, fEnd = first.endDate;
@@ -3532,9 +3537,10 @@ var MARKERS = {
 };
 
 var styles$2 = function (theme) {
+    var _a, _b, _c;
     return createStyles({
         header: {
-            padding: "20px 70px"
+            padding: (_c = (_b = (_a = theme.calendar) === null || _a === void 0 ? void 0 : _a.header) === null || _b === void 0 ? void 0 : _b.padding) !== null && _c !== void 0 ? _c : "20px 70px"
         },
         headerItem: {
             flex: 1,
