@@ -20,14 +20,14 @@ import { MARKERS } from "../markers";
 
 const styles = (theme: Theme) =>
   createStyles({
-    header: {
+    calendarHeader: {
       padding: theme.calendar?.header?.padding ?? "20px 70px"
     },
     headerItem: {
       flex: 1,
       textAlign: "center"
     },
-    divider: {
+    headerDivider: {
       borderLeft: `1px solid ${theme.palette.action.hover}`,
       marginBottom: 20
     }
@@ -91,7 +91,7 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
     <Paper elevation={5} square>
       <Grid container direction="row" wrap="nowrap">
         <Grid>
-          <Grid container className={classes.header} alignItems="center">
+          <Grid container className={classes.calendarHeader} alignItems="center">
             <Grid item className={classes.headerItem}>
               <Typography variant="subtitle1">
                 {startDate ? format(startDate, "MMMM dd, yyyy", { locale: translation?.locale }) : translationText?.startDate as string}
@@ -117,7 +117,7 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
               weekDays={translationText?.weekDays}
               months={translationText?.months}
             />
-            <div className={classes.divider} />
+            <div className={classes.headerDivider} />
             <Month
               {...commonProps}
               value={secondMonth}
@@ -129,7 +129,7 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
             />
           </Grid>
         </Grid>
-        <div className={classes.divider} />
+        <div className={classes.headerDivider} />
         <Grid>
           <DefinedRanges
             selectedRange={dateRange}

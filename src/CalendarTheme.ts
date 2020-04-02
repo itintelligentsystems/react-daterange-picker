@@ -1,6 +1,6 @@
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import { createMuiTheme, ThemeOptions, Theme } from '@material-ui/core/styles';
 
-declare module '@material-ui/core/styles/createMuiTheme' {
+declare module '@material-ui/core/styles' {
   interface ChipOptions {
     height?: number;
     width?: number;
@@ -21,15 +21,18 @@ declare module '@material-ui/core/styles/createMuiTheme' {
   }
 }
 
-export default createMuiTheme({
-  calendar: {
-    chip: {
-      height: 36,
-      width: 36,
-      borderRadius: "50%"
+export default function(options: ThemeOptions): Theme {
+  return createMuiTheme({
+    calendar: {
+      chip: {
+        height: 36,
+        width: 36,
+        borderRadius: "50%"
+      },
+      header: {
+        padding: "20px 70px"
+      }
     },
-    header: {
-      padding: "20px 70px"
-    }
-  }
-});
+    ...options
+  });
+}

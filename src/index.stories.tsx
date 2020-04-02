@@ -12,6 +12,7 @@ import {
 } from "date-fns";
 import { DateRangePicker } from ".";
 import { DefinedRange } from "./types";
+import './CalendarTheme';
 
 export default { title: "DateRangePicker" };
 

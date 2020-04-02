@@ -1,4 +1,5 @@
 /// <reference types="react" />
+import './CalendarTheme';
 declare const _default: {
     title: string;
 };

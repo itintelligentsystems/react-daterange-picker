@@ -1,4 +1,5 @@
-declare module '@material-ui/core/styles/createMuiTheme' {
+import { ThemeOptions, Theme } from '@material-ui/core/styles';
+declare module '@material-ui/core/styles' {
     interface ChipOptions {
         height?: number;
         width?: number;
@@ -18,5 +19,4 @@ declare module '@material-ui/core/styles/createMuiTheme' {
         calendar?: CalendarOptions;
     }
 }
-declare const _default: import("@material-ui/core/styles/createMuiTheme").Theme;
-export default _default;
+export default function (options: ThemeOptions): Theme;

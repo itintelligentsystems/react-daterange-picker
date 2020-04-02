@@ -32,12 +32,13 @@ const useStyles = makeStyles((theme: Theme) => {
       height: theme.calendar?.chip?.height ?? 36,
       width: theme.calendar?.chip?.width ?? 36,
       padding: 0,
-      borderRadius: borderRadius
+      borderRadius: borderRadius,
+      fontSize: '100%'
     },
     buttonText: {
       lineHeight: 1.6
     },
-    outlined: {
+    outlinedDay: {
       border: `1px solid ${theme.palette.primary.dark}`
     },
     filled: {
@@ -71,7 +72,7 @@ const Day = (props: DayProps) => {
       <IconButton
         className={combine(
           classes.dayButton,
-          !props.disabled && props.outlined && classes.outlined,
+          !props.disabled && props.outlined && classes.outlinedDay,
           !props.disabled && props.filled && classes.filled
         )}
         disabled={props.disabled}

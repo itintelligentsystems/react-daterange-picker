@@ -11,7 +11,6 @@ var styles$3 = require('@material-ui/core/styles');
 var ArrowRightAlt = _interopDefault(require('@material-ui/icons/ArrowRightAlt'));
 var ChevronLeft = _interopDefault(require('@material-ui/icons/ChevronLeft'));
 var ChevronRight = _interopDefault(require('@material-ui/icons/ChevronRight'));
-var createMuiTheme = _interopDefault(require('@material-ui/core/styles/createMuiTheme'));
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -3444,12 +3443,13 @@ var useStyles = styles$3.makeStyles(function (theme) {
             height: (_f = (_e = (_d = theme.calendar) === null || _d === void 0 ? void 0 : _d.chip) === null || _e === void 0 ? void 0 : _e.height) !== null && _f !== void 0 ? _f : 36,
             width: (_j = (_h = (_g = theme.calendar) === null || _g === void 0 ? void 0 : _g.chip) === null || _h === void 0 ? void 0 : _h.width) !== null && _j !== void 0 ? _j : 36,
             padding: 0,
-            borderRadius: borderRadius
+            borderRadius: borderRadius,
+            fontSize: '100%'
         },
         buttonText: {
             lineHeight: 1.6
         },
-        outlined: {
+        outlinedDay: {
             border: "1px solid " + theme.palette.primary.dark
         },
         filled: {
@@ -3470,7 +3470,7 @@ var Day = function (props) {
     var value = props.value;
     var classes = useStyles();
     return (React.createElement("div", { className: combine(classes.buttonContainer, props.startOfRange && classes.leftBorderRadius, props.endOfRange && classes.rightBorderRadius, !props.disabled && props.highlighted && classes.highlighted) },
-        React.createElement(core.IconButton, { className: combine(classes.dayButton, !props.disabled && props.outlined && classes.outlined, !props.disabled && props.filled && classes.filled), disabled: props.disabled, onClick: props.onClick, onMouseOver: props.onHover },
+        React.createElement(core.IconButton, { className: combine(classes.dayButton, !props.disabled && props.outlined && classes.outlinedDay, !props.disabled && props.filled && classes.filled), disabled: props.disabled, onClick: props.onClick, onMouseOver: props.onHover },
             React.createElement(core.Typography, { className: combine(classes.buttonText, !props.disabled && props.filled && classes.contrast), variant: "body2" }, value))));
 };
 
@@ -3483,7 +3483,7 @@ var NavigationAction;
 var WEEK_DAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 var styles$1 = function (_) {
     return core.createStyles({
-        root: {
+        calendarRoot: {
             width: 290
         },
         weekDaysContainer: {
@@ -3502,7 +3502,7 @@ var styles$1 = function (_) {
 var Month = function (props) {
     var classes = props.classes, helpers = props.helpers, handlers = props.handlers, date = props.value, dateRange = props.dateRange, marker = props.marker, setDate = props.setValue, minDate = props.minDate, maxDate = props.maxDate, _a = props.weekDays, weekDays = _a === void 0 ? WEEK_DAYS : _a, months = props.months;
     var _b = props.navState, back = _b[0], forward = _b[1];
-    return (React.createElement(core.Paper, { square: true, elevation: 0, className: classes.root },
+    return (React.createElement(core.Paper, { square: true, elevation: 0, className: classes.calendarRoot },
         React.createElement(core.Grid, { container: true },
             React.createElement(Header$1, { date: date, setDate: setDate, nextDisabled: !forward, prevDisabled: !back, onClickPrevious: function () {
                     return handlers.onMonthNavigate(marker, NavigationAction.Previous);
@@ -3547,14 +3547,14 @@ var MARKERS = {
 var styles$2 = function (theme) {
     var _a, _b, _c;
     return styles$3.createStyles({
-        header: {
+        calendarHeader: {
             padding: (_c = (_b = (_a = theme.calendar) === null || _a === void 0 ? void 0 : _a.header) === null || _b === void 0 ? void 0 : _b.padding) !== null && _c !== void 0 ? _c : "20px 70px"
         },
         headerItem: {
             flex: 1,
             textAlign: "center"
         },
-        divider: {
+        headerDivider: {
             borderLeft: "1px solid " + theme.palette.action.hover,
             marginBottom: 20
         }
@@ -3572,7 +3572,7 @@ var Menu = function (props) {
     return (React__default.createElement(core.Paper, { elevation: 5, square: true },
         React__default.createElement(core.Grid, { container: true, direction: "row", wrap: "nowrap" },
             React__default.createElement(core.Grid, null,
-                React__default.createElement(core.Grid, { container: true, className: classes.header, alignItems: "center" },
+                React__default.createElement(core.Grid, { container: true, className: classes.calendarHeader, alignItems: "center" },
                     React__default.createElement(core.Grid, { item: true, className: classes.headerItem },
                         React__default.createElement(core.Typography, { variant: "subtitle1" }, startDate ? format(startDate, "MMMM dd, yyyy", { locale: translation === null || translation === void 0 ? void 0 : translation.locale }) : translationText === null || translationText === void 0 ? void 0 : translationText.startDate)),
                     React__default.createElement(core.Grid, { item: true, className: classes.headerItem },
@@ -3582,9 +3582,9 @@ var Menu = function (props) {
                 React__default.createElement(core.Divider, null),
                 React__default.createElement(core.Grid, { container: true, direction: "row", justify: "center", wrap: "nowrap" },
                     React__default.createElement(Month$1, __assign({}, commonProps, { value: firstMonth, setValue: setFirstMonth, navState: [true, canNavigateCloser], marker: MARKERS.FIRST_MONTH, weekDays: translationText === null || translationText === void 0 ? void 0 : translationText.weekDays, months: translationText === null || translationText === void 0 ? void 0 : translationText.months })),
-                    React__default.createElement("div", { className: classes.divider }),
+                    React__default.createElement("div", { className: classes.headerDivider }),
                     React__default.createElement(Month$1, __assign({}, commonProps, { value: secondMonth, setValue: setSecondMonth, navState: [canNavigateCloser, true], marker: MARKERS.SECOND_MONTH, weekDays: translationText === null || translationText === void 0 ? void 0 : translationText.weekDays, months: translationText === null || translationText === void 0 ? void 0 : translationText.months })))),
-            React__default.createElement("div", { className: classes.divider }),
+            React__default.createElement("div", { className: classes.headerDivider }),
             React__default.createElement(core.Grid, null,
                 React__default.createElement(DefinedRanges, { selectedRange: dateRange, ranges: ranges, setRange: setDateRange })))));
 };
@@ -3628,19 +3628,6 @@ var getDefaultRanges = function (date) { return [
     }
 ]; };
 var defaultRanges = getDefaultRanges(new Date());
-
-createMuiTheme({
-    calendar: {
-        chip: {
-            height: 36,
-            width: 36,
-            borderRadius: "50%"
-        },
-        header: {
-            padding: "20px 70px"
-        }
-    }
-});
 
 var getValidatedMonths = function (range, minDate, maxDate) {
     var startDate = range.startDate, endDate = range.endDate;

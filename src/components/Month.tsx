@@ -25,7 +25,7 @@ const WEEK_DAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
 const styles = (_: Theme) =>
 	createStyles({
-		root: {
+		calendarRoot: {
 			width: 290
 		},
 		weekDaysContainer: {
@@ -78,7 +78,7 @@ const Month: React.FunctionComponent<MonthProps> = props => {
 
 	const [back, forward] = props.navState;
 	return (
-		<Paper square elevation={0} className={classes.root}>
+		<Paper square elevation={0} className={classes.calendarRoot}>
 			<Grid container>
 				<Header
 					date={date}
