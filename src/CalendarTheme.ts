@@ -2,19 +2,19 @@ import { createMuiTheme } from "@material-ui/core/styles";
 
 declare module "@material-ui/core/styles" {
   interface ChipOptions {
-      height?: number;
-      width?: number;
-      borderRadius?: number|string;
+    height?: number;
+    width?: number;
+    borderRadius?: number | string;
   }
   interface CalendarHeaderOptions {
     padding?: string;
   }
   interface CalendarOptions {
     chip?: ChipOptions;
-    header?: CalendarHeaderOptions ;
+    header?: CalendarHeaderOptions;
   }
   interface Theme {
-      calendar: CalendarOptions;
+    calendar?: CalendarOptions;
   }
   interface ThemeOptions {
     calendar?: CalendarOptions;
@@ -26,7 +26,7 @@ export default createMuiTheme({
     chip: {
       height: 36,
       width: 36,
-      borderRadius: '50%'
+      borderRadius: "50%"
     },
     header: {
       padding: "20px 70px"
