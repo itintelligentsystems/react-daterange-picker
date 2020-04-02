@@ -1,6 +1,6 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 
-declare module "@material-ui/core/styles" {
+declare module '@material-ui/core/styles/createMuiTheme' {
   interface ChipOptions {
     height?: number;
     width?: number;

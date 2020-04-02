@@ -1,4 +1,4 @@
-declare module "@material-ui/core/styles" {
+declare module '@material-ui/core/styles/createMuiTheme' {
     interface ChipOptions {
         height?: number;
         width?: number;
@@ -12,11 +12,11 @@ declare module "@material-ui/core/styles" {
         header?: CalendarHeaderOptions;
     }
     interface Theme {
-        calendar: CalendarOptions;
+        calendar?: CalendarOptions;
     }
     interface ThemeOptions {
         calendar?: CalendarOptions;
     }
 }
-declare const _default: import("@material-ui/core/styles").Theme;
+declare const _default: import("@material-ui/core/styles/createMuiTheme").Theme;
 export default _default;
