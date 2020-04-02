@@ -1,6 +1,7 @@
 import * as React from "react";
 import { DateRange, DefinedRange } from "./types";
 import Menu from "./components/Menu";
+import "./CalendarTheme";
 interface DateRangePickerProps {
     open: boolean;
     initialDateRange?: DateRange;

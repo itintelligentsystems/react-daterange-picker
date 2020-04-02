@@ -15,6 +15,7 @@ import Menu from "./components/Menu";
 import { defaultRanges } from "./defaults";
 import { parseOptionalDate } from "./utils";
 import { Marker, MARKERS } from "./markers";
+import "./CalendarTheme";
 
 const getValidatedMonths = (range: DateRange, minDate: Date, maxDate: Date) => {
 	let { startDate, endDate } = range;

@@ -4,6 +4,7 @@ import { createStyles, withStyles, makeStyles } from '@material-ui/core/styles';
 import ArrowRightAlt from '@material-ui/icons/ArrowRightAlt';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import ChevronRight from '@material-ui/icons/ChevronRight';
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -3620,6 +3621,19 @@ var getDefaultRanges = function (date) { return [
     }
 ]; };
 var defaultRanges = getDefaultRanges(new Date());
+
+createMuiTheme({
+    calendar: {
+        chip: {
+            height: 36,
+            width: 36,
+            borderRadius: "50%"
+        },
+        header: {
+            padding: "20px 70px"
+        }
+    }
+});
 
 var getValidatedMonths = function (range, minDate, maxDate) {
     var startDate = range.startDate, endDate = range.endDate;

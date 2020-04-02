@@ -11,6 +11,7 @@ var styles$3 = require('@material-ui/core/styles');
 var ArrowRightAlt = _interopDefault(require('@material-ui/icons/ArrowRightAlt'));
 var ChevronLeft = _interopDefault(require('@material-ui/icons/ChevronLeft'));
 var ChevronRight = _interopDefault(require('@material-ui/icons/ChevronRight'));
+var createMuiTheme = _interopDefault(require('@material-ui/core/styles/createMuiTheme'));
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -3627,6 +3628,19 @@ var getDefaultRanges = function (date) { return [
     }
 ]; };
 var defaultRanges = getDefaultRanges(new Date());
+
+createMuiTheme({
+    calendar: {
+        chip: {
+            height: 36,
+            width: 36,
+            borderRadius: "50%"
+        },
+        header: {
+            padding: "20px 70px"
+        }
+    }
+});
 
 var getValidatedMonths = function (range, minDate, maxDate) {
     var startDate = range.startDate, endDate = range.endDate;
