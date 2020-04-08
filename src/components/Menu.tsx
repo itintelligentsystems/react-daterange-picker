@@ -94,7 +94,7 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
           <Grid container className={classes.calendarHeader} alignItems="center">
             <Grid item className={classes.headerItem}>
               <Typography variant="subtitle1">
-                {startDate ? format(startDate, "MMMM dd, yyyy", { locale: translation?.locale }) : translationText?.startDate as string}
+                {startDate ? format(startDate, "dd/MM/yyyy") : translationText?.startDate as string}
               </Typography>
             </Grid>
             <Grid item className={classes.headerItem}>
@@ -102,7 +102,7 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
             </Grid>
             <Grid item className={classes.headerItem}>
               <Typography variant="subtitle1">
-                {endDate ? format(endDate, "MMMM dd, yyyy", { locale: translation?.locale }) : translationText?.endDate as string}
+                {endDate ? format(endDate, "dd/MM/yyyy") : translationText?.endDate as string}
               </Typography>
             </Grid>
           </Grid>
