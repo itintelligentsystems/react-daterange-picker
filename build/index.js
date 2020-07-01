@@ -3332,8 +3332,8 @@ var combine = function () {
 };
 // Date
 var getDaysInMonth$1 = function (date) {
-    var startWeek = startOfWeek(startOfMonth(date));
-    var endWeek = endOfWeek(endOfMonth(date));
+    var startWeek = startOfWeek(startOfMonth(date), { weekStartsOn: 1 });
+    var endWeek = endOfWeek(endOfMonth(date), { weekStartsOn: 1 });
     var days = [];
     for (var curr = startWeek; isBefore(curr, endWeek);) {
         days.push(curr);
@@ -3480,7 +3480,7 @@ var NavigationAction;
     NavigationAction[NavigationAction["Next"] = 1] = "Next";
 })(NavigationAction || (NavigationAction = {}));
 
-var WEEK_DAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+var WEEK_DAYS = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 var styles$1 = function (_) {
     return core.createStyles({
         calendarRoot: {
