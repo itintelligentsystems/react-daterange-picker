@@ -1,10 +1,10 @@
 {
 	"name": "@itintelligentsystems/react-daterange-picker",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "A react date range picker using Material Design",
 	"author": {
-		"email": "itintelligentsystems@gmail.com",
-		"name": "Antons Sisojevs"
+		"email": "it.main@intelligentsystems.lv",
+		"name": "itintelligentsystems"
 	},
 	"repository": {
 		"type": "git",
