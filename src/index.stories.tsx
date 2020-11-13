@@ -16,8 +16,10 @@ import './CalendarTheme';
 
 export default { title: "DateRangePicker" };
 
+const DEFAULT_DATE_FORMAT = 'yyyy-MM-dd';
+
 export const justDateRange = () => (
-  <DateRangePicker open={true} onChange={() => {}} />
+  <DateRangePicker open={true} onChange={() => {}} dateFormat={DEFAULT_DATE_FORMAT}/>
 );
 
 const theme = createMuiTheme({
@@ -30,7 +32,7 @@ const theme = createMuiTheme({
 export const withTheme = () => {
   return (
     <ThemeProvider theme={theme}>
-      <DateRangePicker open={true} onChange={() => {}} />
+      <DateRangePicker open={true} onChange={() => {}} dateFormat={DEFAULT_DATE_FORMAT}/>
     </ThemeProvider>
   );
 };
@@ -99,6 +101,7 @@ export const withTranslation = () => {
         locale: pt
       }}
       definedRanges={getDefaultRanges(new Date())}
+      dateFormat={DEFAULT_DATE_FORMAT}
     />
   );
 };

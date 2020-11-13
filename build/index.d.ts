@@ -10,6 +10,7 @@ interface DateRangePickerProps {
     maxDate?: Date | string;
     onChange: (dateRange: DateRange) => void;
     translation?: React.ComponentPropsWithoutRef<typeof Menu>['translation'];
+    dateFormat: string;
 }
 export { DateRange, DefinedRange } from "./types";
 export declare const DateRangePicker: (props: DateRangePickerProps) => JSX.Element | null;

@@ -57,7 +57,8 @@ interface MenuProps extends WithStyles<typeof styles> {
     months?: [string, string, string, string, string, string, string, string, string, string, string, string];
     weekDays?: [string, string, string, string, string, string, string];
     locale?: object;
-  }
+  },
+  dateFormat: string;
 }
 
 const Menu: React.FunctionComponent<MenuProps> = props => {
@@ -75,6 +76,7 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
     helpers,
     handlers,
     translation,
+    dateFormat
   } = props;
   const translationText = {
     ...{
@@ -94,7 +96,7 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
           <Grid container className={classes.calendarHeader} alignItems="center">
             <Grid item className={classes.headerItem}>
               <Typography variant="subtitle1">
-                {startDate ? format(startDate, "dd/MM/yyyy") : translationText?.startDate as string}
+                {startDate ? format(startDate, dateFormat) : translationText?.startDate as string}
               </Typography>
             </Grid>
             <Grid item className={classes.headerItem}>
@@ -102,7 +104,7 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
             </Grid>
             <Grid item className={classes.headerItem}>
               <Typography variant="subtitle1">
-                {endDate ? format(endDate, "dd/MM/yyyy") : translationText?.endDate as string}
+                {endDate ? format(endDate, dateFormat) : translationText?.endDate as string}
               </Typography>
             </Grid>
           </Grid>
